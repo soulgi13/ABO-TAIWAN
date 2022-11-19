@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>台灣最多的血型</title>
+
+	<style>
+		.highcharts-figure,
+.highcharts-data-table table {
+  min-width: 320px;
+  max-width: 800px;
+  margin: 1em auto;
+}
+
+.highcharts-data-table table {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #ebebeb;
+  margin: 10px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.highcharts-data-table caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.highcharts-data-table th {
+  font-weight: 600;
+  padding: 0.5em;
+}
+
+.highcharts-data-table td,
+.highcharts-data-table th,
+.highcharts-data-table caption {
+  padding: 0.5em;
+}
+
+.highcharts-data-table thead tr,
+.highcharts-data-table tr:nth-child(even) {
+  background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+  background: #f1f7ff;
+}
+
+input[type="number"] {
+  min-width: 50px;
+}
+	</style>
+</head>
+<body>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <p class="highcharts-description">
+    O型幾乎是佔了全台灣4成左右的人口。 根據醫療財團法人台灣血液基金會在2020年的統計，O型人口約佔台灣的人口數為44.11%，A型的人口約為26.42%，B型人口約為23.53%，最後則是AB型的人口僅佔總人口的數量為5.94%。
+    <br>
+    <br>
+    大傳三A 410916516 許祐綺
+  </p>
+</figure>
+	<script>
+		// Data retrieved from https://netmarketshare.com
+Highcharts.chart('container', {
+  chart: {
+    plotBackgroundColor: null,
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: '台灣最多的血型'
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+      }
+    }
+  },
+  series: [{
+    name: '血型',
+    colorByPoint: true,
+    data: [{
+      name: 'O型',
+      y: 44.11,
+      sliced: true,
+      selected: true
+    }, {
+      name: 'A型',
+      y: 26.42
+    },  {
+      name: 'B型',
+      y: 23.53
+    }, {
+      name: 'AB型',
+      y: 5.94
+    }]
+  }]
+});
+	</script>
+</body>
+</html>
